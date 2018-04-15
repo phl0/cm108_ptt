@@ -140,7 +140,8 @@ int cm108_open(const char* path)
 	    (hiddevinfo.vendor == 0x0c76 &&	// SSS1621/23
 		(hiddevinfo.product == 0x1605 ||
 		hiddevinfo.product == 0x1607 ||
-		hiddevinfo.product == 0x160b)
+		hiddevinfo.product == 0x160b ||
+		hiddevinfo.product == 0x013c)
 	    )
 	  )
 	)
@@ -195,8 +196,8 @@ void cm108_ptt_set(int fd, int state)
 			0x00, // report number
 			// HID output report
 			0x00,
-			(state == 1) ? 1 : 0, // set GPIO
-			1, // Data direction register (1=output)
+			(state == 1) ? 3 : 0, // set GPIO
+			3, // Data direction register (1=output)
 			0x00
 		};
 
